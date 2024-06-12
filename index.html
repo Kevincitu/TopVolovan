@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopVolovan</title>
+    <link rel="shortcut icon" href="Img/logovan.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">inicio</a>
+            <a href="#">Que es?</a>
+            <a href="#">Como se elabora?</a>
+            <a href="#">Tipos de volovan</a>
+            <a href="#">Donde comprar tu volovan?</a>
+            <a href="#">Tops Volovanes</a>
+            <a href="#">Arte de Volovan</a>
+            <a href="#">Juego de volovan?</a>
+        </nav>
+        <section class="textos-header">
+            <h1>Esto es TopVolovan!</h1>
+                <h2>Una pagina web para los amantes de estos.</h2>
+            </section>
+            <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-5.36,93.08 C163.37,102.95 349.20,-49.98 504.79,32.88 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #ff0000;"></path></svg></div>
+        </header>
+        <main>
+            <canvas id="gameCanvas" width="256" height="240"></canvas>
+            <script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
+            <script>
+                (function() {
+                    const ROM_URL = 'roms/Super Mario Bros (E)_Modified.nes'; // URL del archivo ROM
+    
+                    const canvas = document.getElementById('gameCanvas');
+                    const context = canvas.getContext('2d');
+                    const nes = new jsnes.NES({
+                        onFrame: function(frameBuffer) {
+                            for (let i = 0; i < frameBuffer.length; i++) {
+                                const color = frameBuffer[i];
+                                context.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                                context.fillRect(i % 256, Math.floor(i / 256), 1, 1);
+                            }
+                        },
+                        onAudioSample: function(left, right) {
+                            // Manejar audio
+                        },
+                    });
+    
+                    fetch(ROM_URL)
+                        .then(response => response.arrayBuffer())
+                        .then(buffer => {
+                            nes.loadROM(new Uint8Array(buffer));
+                            window.requestAnimationFrame(onAnimationFrame);
+                        });
+    
+                    function onAnimationFrame() {
+                        nes.frame();
+                        window.requestAnimationFrame(onAnimationFrame);
+                    }
+                })();
+            </script>
+        </main>
+        <footer>
+        </section>
+    </header>
+    <main>
+        <section class="contenedor sobre-nosotros">
+            <h2 class="titulo">Volovanes</h2>
+        <div class="contenedor-sobre-nosotros">
+            <img src="img/voloport.webp" alt=""class="imagen-about-us">
+            <div class="contenido-textos">
+                <h3>Que es el volovan?</h3>
+                <p>El volován es una pequeña pieza de repostería francesa hecha de masa de hojaldre. Se caracteriza por su forma cuadrática y hueca, que se obtiene apilando varias capas de masa, y su borde elevado, que permite contener diferentes rellenos. Su nombre proviene del francés "vol-au-vent", que significa "vuelo al viento", una referencia a su ligereza. Los volovanes pueden rellenarse con ingredientes dulces o salados, como mariscos, pollo, champiñones,  cremas, entré otros, y se hornean hasta obtener una textura crujiente y dorada. Son populares como aperitivos y en eventos especiales por su elegancia y versatilidad culinaria.</p>
+            </div>
+        </div>
+        <section class="portafolio">
+            <div class="contenedor">
+                <h2 class="titulo">¿Cómo se elabora?</h2>
+                <div class="galeria-elab">
+                    <div class="imagen-elab">
+                        <a href="recetas/jamon-con-queso.html">
+                            <img src="img/jcnq.jpeg" alt="Volovan de jamón con queso">
+                            <div class="hover-galeria">
+                                <p>Volovan de jamón con queso</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/tres-quesos.html">
+                            <img src="img/tres.jpeg" alt="Volovan de tres quesos">
+                            <div class="hover-galeria">
+                                <p>Volovan de tres quesos</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/pollo.html">
+                            <img src="img/poll.jpeg" alt="Volovan de pollo">
+                            <div class="hover-galeria">
+                                <p>Volovan de pollo</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/choriquezo.html">
+                            <img src="img/chor.jpeg" alt="Volovan de choriquezo">
+                            <div class="hover-galeria">
+                                <p>Volovan de choriquezo</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/hawaiano.html">
+                            <img src="img/hawai.jpeg" alt="Volovan hawaiano">
+                            <div class="hover-galeria">
+                                <p>Volovan hawaiano</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/jaiba.html">
+                            <img src="img/jaib.jpeg" alt="Volovan de jaiba">
+                            <div class="hover-galeria">
+                                <p>Volovan de jaiba</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/philadelphia.html">
+                            <img src="img/phil.jpeg" alt="Volovan de philadelphia">
+                            <div class="hover-galeria">
+                                <p>Volovan de philadelphia</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/cubano.html">
+                            <img src="img/cuba.jpeg" alt="Volovan cubano">
+                            <div class="hover-galeria">
+                                <p>Volovan cubano</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/pastor.html">
+                            <img src="img/past.jpeg" alt="Volovan de pastor">
+                            <div class="hover-galeria">
+                                <p>Volovan de pastor</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/atun.html">
+                            <img src="img/atun.jpeg" alt="Volovan de atún">
+                            <div class="hover-galeria">
+                                <p>Volovan de atún</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="imagen-elab">
+                        <a href="recetas/champinones.html">
+                            <img src="img/cham.jpeg" alt="Volovan de champiñones">
+                            <div class="hover-galeria">
+                                <p>Volovan de champiñones</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section>
+    <section class="Donde comprar? contenedor">
+        <h2 class="titulo">Donde comprar tu volovan?</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="img/DonF.jpeg" alt="">
+                <div class="contenido-texto-card"></div>
+                <p>Volovanes Don Fermín</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/cruc.jpeg" alt="">
+            <div class="contenido-texto-card"></div>
+            <p>Volovanes del cruce de los bancos</p>
+        </div>
+    </div> <div class="card">
+        <img src="img/DonV.jpeg" alt="">
+        <div class="contenido-texto-card"></div>
+        <p>Volovanes Don Don Volo</p>
+    </div>
+</div> <div class="card">
+    <img src="img/dnig.jpeg" alt="">
+    <div class="contenido-texto-card"></div>
+    <p>D'Negri</p>
+</div>
+</div>
+    </div>
+    <section class="about-TopVolovan">
+        <div class="contenedor">
+            <h2 class="TopVolovan"></h2>
+        </div>
+    </section>
+
+
+
+
+
+    <section id="encuesta">
+        <h2>Encuesta mejores Volovanes</h2>
+        <p>Para ti... ¿Cuál es el mejor volovan?</p>
+        <form>
+            <label for="favorito">¿Cuál es tu volovan favorito?</label><br>
+            <input type="text" id="favorito" name="favorito"><br><br>
+            <input type="submit" value="Enviar">
+        </form>
+        <section id="topvolovan">
+            <h2>TopVolovan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Volovan</th>
+                        <th>Cuántos votaron por él</th>
+                        <th>Porcentaje que obtuvo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Volovan pepperoni</td>
+                        <td>2 personas</td>
+                        <td>3.33%</td>
+                    </tr>
+                    <tr>
+                        <td>Volovan Cubano</td>
+                        <td>6 personas</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                        <td>Volovan de jamon y queso</td>
+                        <td>18 personas</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Volovan de tres quesos</td>
+                        <td>12 personas</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>Volovan de choriqueso</td>
+                        <td>3 personas</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                        <td>Volovan de pastor</td>
+                        <td>4 personas</td>
+                        <td>6.67%</td>
+                    </tr>
+                    <tr>
+                        <td>Volovan de jaiba</td>
+                        <td>4 personas</td>
+                        <td>6.67%</td>
+                    </tr><tr>
+                        <td>Volovan de champiñones</td>
+                        <td>2 personas</td>
+                        <td>3.33%</td>
+                    </tr><tr>
+                        <td>Volovan de salchicha</td>
+                        <td>1 personas</td>
+                        <td>1.67%</td>
+                    </tr><tr>
+                        <td>Volovan hawaiano</td>
+                        <td>3 personas</td>
+                        <td>5%</td>
+                    </tr><tr>
+                        <td>Volovan de pollo</td>
+                        <td>4 personas</td>
+                        <td>6.67%</td>
+                    </tr><tr>
+                        <td>Volovan de philadelphia</td>
+                        <td>1 personas</td>
+                        <td>1.67%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="seccion-artistica">
+            <h2>Sección artística de Volovanes</h2>
+            <div class="gallery">
+                <img src="Img/IMG-20240528-WA0070.jpg" alt="Arte de Volovan 1">
+                <p>La joven del volovan , una pintura que muestra como el volovan , algo más allá de uns parte gastronómica, se puede volver parte de nosotros, y lo es . El amor del volovan es el amor de nosotros s la vida , all we need Is volovan</p>
+                <img src="Img/IMG-20240528-WA0071.jpg" alt="Arte de Volovan 2">
+                <p>El grito , una mofa a esta pintura , sin duda una obra que refleja como el volovan es el grito del alma desnuda y vieja de aquellos volovaneros que solo conocen la belleza del volovan</p>
+                <img src="Img/IMG-20240528-WA0072.jpg" alt="Arte de Volovan 3">
+                <p>Hijo del hombre , y su icónico traje sin rostro , solo un volovan sin expresión por fuera, ocultando el rostro del hombre , más sin embargo , la elegancia y dulces trazos de esta obra, y el volovan llenarán tu paladar y mente de simple y vibrante armonía en tu corazón.</p>
+                <img src="Img/IMG-20240528-WA0073.jpg" alt="Arte de Volovan 4">
+                <p>Una obra tan grande como la mona lisa, cegada por una obra urbana como el volovan , un signo de rebeldía que se vende en cualquier lado , sin seguir una regla , simple libertad</p>
+            </div>
+        </section>
+</section>
+</section>
+</main>
+
+<!-- Emulador jsnes -->
+<script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
+<script>
+    const ROM_URL = 'roms/Super Mario Bros (E)_Modified.nes'; // URL del archivo ROM
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 256;
+    canvas.height = 240;
+    document.body.appendChild(canvas);
+
+    const context = canvas.getContext('2d');
+    const nes = new jsnes.NES({
+        onFrame: function(frameBuffer) {
+            for (let i = 0; i < frameBuffer.length; i++) {
+                const color = frameBuffer[i];
+                context.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                context.fillRect(i % 256, Math.floor(i / 256), 1, 1);
+            }
+        },
+        onAudioSample: function(left, right) {
+            // Manejar audio
+        },
+    });
+
+    fetch(ROM_URL)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+            nes.loadROM(new Uint8Array(buffer));
+            window.requestAnimationFrame(onAnimationFrame);
+        });
+
+    function onAnimationFrame() {
+        nes.frame();
+        window.requestAnimationFrame(onAnimationFrame);
+    }
+</script>
+<!-- Sección de redes sociales -->
+<footer>
+    <section id="redes-sociales">
+        <h2>Síguenos en nuestras redes sociales</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61560312343500&mibextid=ZbWKwL" target="_blank">
+                <img src="img/face.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/top_volovan?igsh=azVkNjc4dW1tajlx" target="_blank">
+                <img src="img/insta.jpeg" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/@TreborBS" target="_blank">
+                <img src="img/yout.png" alt="YouTube">
+            </a>
+        </div>
+    </section>
+</footer>
+
+        </section>
+    </main>
+</body>
+</html>
+
+ 
